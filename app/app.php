@@ -21,6 +21,13 @@
       return $app['twig']->render('contacts.html.twig', array('contacts' => $all_contacts));
     });
 
+    //contacts POST Method
+    $app->post("/contacts", function() use ($app) {
+      $contact = new Contact($_POST['name'], $_POST['number'], $_POST['address']);
+      $contact->save();
+      return $app['twig']->render('create_contacts.html.twig', array('newcontacts' => $contact));
+    });
+
     return $app;
 
 ?>
