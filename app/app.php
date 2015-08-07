@@ -14,3 +14,13 @@
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
       'twig.path' => __DIR__.'/../views'
     ));
+
+    //Route and Controller
+    $app->get("/", function() use ($app) {
+      $all_contacts = Contact::getAll();
+      return $app['twig']->render('contacts.html.twig', array('contacts' => $all_contacts));
+    });
+
+    return $app;
+
+?>
