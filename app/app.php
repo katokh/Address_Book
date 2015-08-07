@@ -28,6 +28,12 @@
       return $app['twig']->render('create_contacts.html.twig', array('newcontact' => $contact));
     });
 
+    //contacts POST Delete Method
+    $app->post("/delete_contacts", function() use ($app) {
+      Contact::deleteAll();
+      return $app['twig']->render('delete_contacts.html.twig');
+    });
+
     return $app;
 
 ?>
