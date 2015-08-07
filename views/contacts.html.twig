@@ -5,17 +5,21 @@
 <body>
   <h1>Address Book</h1>
 
+  <!-- the contacts variable is pulled from the Route and Controller section of app.php -->
   {% if contacts is not empty %}
     <p>Here are all of the contacts you have added:</p>
     <ul>
       {% for contact in contacts %}
-        <li>{{ contact.getName }}</li>
-        <li>{{ contact.getNumber }}</li>
-        <li>{{ contact.getAddress }}</li>
+        <li><h2>{{ contact.getName }}</h2></li>
+        <ul>
+          <li>{{ contact.getNumber }}</li>
+          <li>{{ contact.getAddress }}</li>
+        </ul>
       {% endfor %}
     </ul>
   {% endif %}
 
+  <!-- takes the information given by the user and displays it on the create_contacts.html.twig page-->
   <form action = '/contacts' method = 'post'>
     <label for = 'name'>Name:</label>
     <input id = 'name' name = 'name' type = 'text'>
@@ -30,6 +34,7 @@
     <button type = 'submit'>Add Contact</button>
   </form>
 
+  <!--deletes the information given by the user and brings the user to the delete.contacts.html.twig page-->
   <form action = '/delete_contacts' method = 'post'>
     <button type = 'submit'>Delete Contacts</button>
   </form>
